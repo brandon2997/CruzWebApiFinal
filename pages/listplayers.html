@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Game</title>
+</head>
+<body>
+        <div id = "container">
+
+            <p>List of Players Here</p>
+      
+            
+            <script>
+                
+                fetch("/getPlayers").then(function(listplayers){
+                    listplayers.json().then(function(thePlayers){
+                        //console.log(thePlayers);
+                        //console.log(thePlayers.listplayers[0].name);
+                        //console.log(thePlayers.listplayers[1].name);
+                        //console.log(thePlayers.listplayers[2].name);
+                        //append our container html
+                        for(var i = 0; i < thePlayers.listplayers.length; i++)
+                        {
+                            var playerElement = document.createElement('p')
+                            //console.log(name.player.name)
+                            console.log(thePlayers.listplayers[i].name);
+                            playerElement.innerHTML = thePlayers.listplayers[i].name+ " " + thePlayers.listplayers[i].score + " " + thePlayers.listplayers[i].timesplayed 
+                                document.getElementById("container").appendChild(playerElement)
+                                
+                               
+
+                        }
+                    })
+                })
+                </script>
+
+</div>
+
+</body>
+</html>
